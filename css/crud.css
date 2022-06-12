@@ -1,0 +1,12 @@
+body {
+    background-color: rgb(41, 96, 197);
+}
+input {
+    background-color: transparent !important;
+    color: white !important;
+}
+
+.alert {
+    color: red;
+    background-color: rgb(26, 75, 165);
+}

@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CRUDS</title>
+    <link rel="stylesheet" href="css/bootstrap.min.css">
+    <link rel="stylesheet" href="css/all.min.css">
+    <link rel="stylesheet" href="css/crud.css">
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@100;300;400;500;700;900&display=swap" rel="stylesheet">
+</head>
+<body>
+  <div class="container py-5">
+      <div class="input mt-3">
+       <input type="text" placeholder="Product Name..." class="form-control" id="productNmae">
+       <p id="nameAlert" class="alert p-2 d-none">Name is not valid enter a litter is uppercas and 3 litters lowercase or ></p>
+      </div>
+      <div class="input mt-3">
+       <input type="number" placeholder="Product Price..." class="form-control" id="productPrice">
+       <p id="priceAlert" class="alert p-2 d-none">Number is not valid don't start with 0 and enter four intager</p>
+      </div>
+      <div class="input mt-3">
+       <input type="text" placeholder="Product Category..." class="form-control" id="productCategory">
+       <p id="categoryAlert" class="alert p-2 d-none">Minmun litters is five and start with a litter is uppercase</p>
+      </div>
+      <div class="input my-3">
+       <input type="text" placeholder="Product Descraption..." class="form-control" id="productDescraption">
+      </div>
+      <button class="btn btn-outline-light" type="button" onclick="addProduct()" id="addPorduct">Add Product</button>
+      <button class="btn btn-outline-warning d-none" type="button" onclick="addEdit(currntIndex)" id="addEdit">update</button>
+      <button class="btn btn-outline-danger" type="button" onclick="clearForm()" id="clearForm">Clear Form</button>
+    <input type="search" placeholder="Search..." class="form-control my-4 mx-auto w-50" id="searchInput" oninput="search(this.value)">
+    <table class="table w-100">
+      <thead class="fw-bold text-white">
+        <td>INDEX</td>
+        <td>productNmae</td>
+        <td>productPrice</td>
+        <td>productCategory</td>
+        <td>productDescraption</td>
+        <td>Delete</td>
+        <td>Update</td>
+      </thead>
+      <tbody id="tableData" class="text-black-50 fw-bold">
+
+      </tbody>
+    </table>
+  </div>
+  
+  <script src="js/bootstrap.bundle.min.js"></script>
+  <script src="js/all.min.js"></script>
+  <script src="js/main.js"></script>
+</body>
+</html>
