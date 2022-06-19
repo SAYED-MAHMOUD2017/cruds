@@ -12,36 +12,48 @@
 </head>
 <body>
   <div class="container py-5">
+    <div class="row">
       <div class="input mt-3">
-       <input type="text" placeholder="Product Name..." class="form-control" id="productNmae">
-       <p id="nameAlert" class="alert p-2 d-none">Name is not valid enter a litter is uppercas and 3 litters lowercase or ></p>
+        <input type="text" placeholder="Product Name..." class="form-control" id="productNmae">
+        <p id="nameAlert" class="alert p-2 d-none">Name is not valid enter a litter is uppercas and minimum 3 litters lowercase</p>
       </div>
+
       <div class="input mt-3">
-       <input type="number" placeholder="Product Price..." class="form-control" id="productPrice">
-       <p id="priceAlert" class="alert p-2 d-none">Number is not valid don't start with 0 and enter four intager</p>
+        <select class="form-select" id="productCategory">
+          <option value="mobile">Mobile</option>
+          <option value="laptop">Laptop</option>
+          <option value="tv">TV</option>
+        </select>
       </div>
-      <div class="input mt-3">
-       <input type="text" placeholder="Product Category..." class="form-control" id="productCategory">
-       <p id="categoryAlert" class="alert p-2 d-none">Minmun litters is five and start with a litter is uppercase</p>
-      </div>
+
+        <div class="input mt-3">
+          <input type="number" placeholder="Product Price..." class="form-control me-2" id="productPrice">
+          <p id="priceAlert" class="alert p-2 d-none">Number is not valid don't start with 0 and enter minimum four intager</p>
+        </div>
+        
       <div class="input my-3">
-       <input type="text" placeholder="Product Descraption..." class="form-control" id="productDescraption">
+        <input type="text" placeholder="Product Descraption..." class="form-control" id="productDescraption">
       </div>
-      <button class="btn btn-outline-light" type="button" onclick="addProduct()" id="addPorduct">Add Product</button>
-      <button class="btn btn-outline-warning d-none" type="button" onclick="addEdit(currntIndex)" id="addEdit">update</button>
-      <button class="btn btn-outline-danger" type="button" onclick="clearForm()" id="clearForm">Clear Form</button>
-    <input type="search" placeholder="Search..." class="form-control my-4 mx-auto w-50" id="searchInput" oninput="search(this.value)">
-    <table class="table w-100">
-      <thead class="fw-bold text-white">
+    </div>
+      
+      <button class="btn btn-secondary mb-4" type="button" id="addPorduct" title="Click-(Enter)">Add Product <i class="fa-solid fa-plus-circle"></i></button>
+      <button class="btn btn-warning d-none mt-4 mb-5" type="button" id="addEdit"> Add edit <i class="fa-solid fa-edit"></i></button>
+      <button class="btn btn-danger ms-3 mt-4 mb-5" type="button" id="clearForm" title="Click-(Delete)">Clear Form <i class="fa-solid fa-trash-arrow-up"></i></button>
+      <input type="text" placeholder="Search..." class="form-control mx-auto w-75" id="searchInput">
+  </div>
+
+  <div class="container">
+    <table class="table table-hover my-5">
+      <thead class="fw-bolder text-uppercase bg-black bg-opacity-25 text-center">
         <td>INDEX</td>
         <td>productNmae</td>
         <td>productPrice</td>
         <td>productCategory</td>
         <td>productDescraption</td>
-        <td>Delete</td>
         <td>Update</td>
+        <td>Delete</td>
       </thead>
-      <tbody id="tableData" class="text-black-50 fw-bold">
+      <tbody id="tableData">
 
       </tbody>
     </table>

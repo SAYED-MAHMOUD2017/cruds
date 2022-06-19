@@ -1,12 +1,42 @@
+* {
+    transition: all .2s;
+    scroll-behavior: smooth;
+}
 body {
-    background-color: rgb(41, 96, 197);
+    background-color: rgba(20, 18, 3, 0.637);
 }
-input {
-    background-color: transparent !important;
+input,
+select {
+    background-color: rgb(0,0,0,.8) !important;
     color: white !important;
+    border: none !important;
+    transition: all .3s !important;
 }
-
+input:focus,
+select:focus {
+    transform: scale(1.03);
+}
 .alert {
     color: red;
-    background-color: rgb(26, 75, 165);
+    background-color: rgb(0,0,0,.3);
+}
+::placeholder {
+    color: rgba(222, 184, 135, 0.5) !important;
+    font-weight: 500;
+}
+table {
+    border-collapse: separate;
+}
+#tableData {
+    font-weight: 500;
+}
+::-webkit-scrollbar {
+    background-color: rgb(0,0,0,.3);
+}
+::-webkit-scrollbar-thumb {
+    background-color: rgb(0,0,0,.5);
+}
+::selection {
+    background-color: rgb(0,0,0,.3);
+    color: white;
 }

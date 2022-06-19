@@ -3,8 +3,12 @@ let nameInput = document.getElementById("productNmae");
 let priceInput = document.getElementById("productPrice");
 let categoryInput = document.getElementById("productCategory");
 let descraptionInput = document.getElementById("productDescraption");
+let searchInput = document.getElementById("searchInput");
+
 let addBtn = document.getElementById("addPorduct");
+let editBtn = document.getElementById("addEdit");
 let clearBtn = document.getElementById("clearForm");
+
 let currntIndex;
 let productList;
 
@@ -14,8 +18,10 @@ if(localStorage.getItem("List Items") != null) {
 }else {
   productList = [];
 }
+
+addBtn.addEventListener("click", addProduct)
 function addProduct() {
-  if(validationName() == true && validationPrice() == true && validationCategory() == true) {
+  if(validationName() == true && validationPrice() == true) {
   let product = {
     name: nameInput.value,
     price: priceInput.value,
@@ -26,7 +32,7 @@ function addProduct() {
     localStorage.setItem("List Items", JSON.stringify(productList));
     displayData(productList);
     
-    // You want to clear form after add product auto
+    // You want to clear form after add product auto invok this function
     // clearForm()
 }
 }
@@ -36,24 +42,25 @@ function displayData(list) {
   for(let i = 0; i < list.length; i++) {
         temp += `
         <tr>
-          <td>${i}</td>
+          <td class="text-center">${i}</td>
           <td>${list[i].name}</td>
           <td>${list[i].price}</td>
           <td>${list[i].category}</td>
           <td>${list[i].descraption}</td>
-          <td><button class="btn btn-outline-warning" type="button" id="update" onclick="update(${i})">update</button></td>
-          <td><button class="btn btn-outline-danger" type="button" id="delete" onclick="deleteProduct(${i})">delete</button></td>
+          <td class="text-center"><button class="btn btn-outline-warning" type="button" id="update" onclick="update(${i})"><i class="fa-solid fa-file-pen"></i></button></td>
+          <td class="text-center"><button class="btn btn-outline-danger" type="button" id="delete" onclick="deleteProduct(${i})"><i class="fa-solid fa-trash-can"></i></button></td>
         </tr>
         `;
       }
   document.getElementById("tableData").innerHTML = temp;
 }
-
+clearBtn.addEventListener("click", clearForm)
 function clearForm() {
   nameInput.value = '';
   priceInput.value = '';
-  categoryInput.value = '';
   descraptionInput.value = '';
+  addBtn.classList.replace("d-none","d-inline-block");
+  editBtn.classList.replace("d-inline-block", "d-none");
 }
 
 function update(index) {
@@ -61,20 +68,23 @@ function update(index) {
   priceInput.value = productList[index].price;
   categoryInput.value = productList[index].category;
   descraptionInput.value = productList[index].descraption;
-  document.getElementById("addPorduct").classList.add("d-none");
-  document.getElementById("addEdit").classList.replace("d-none","d-inline-block");
+  addBtn.classList.add("d-none");
+  editBtn.classList.replace("d-none","d-inline-block");
   currntIndex = index;
 }
 
+editBtn.addEventListener("click", ()=> addEdit(currntIndex))
 function addEdit(currntIndex) {
+  if(validationName() == true && validationPrice() == true) {
   productList[currntIndex].name = nameInput.value;
   productList[currntIndex].price = priceInput.value;
   productList[currntIndex].category = categoryInput.value;
   productList[currntIndex].descraption = descraptionInput.value;
-  document.getElementById("addPorduct").classList.replace("d-none","d-inline-block");
-  document.getElementById("addEdit").classList.replace("d-inline-block","d-none");
-  clearForm();
+  addBtn.classList.replace("d-none","d-inline-block");
+  editBtn.classList.replace("d-inline-block","d-none");
   displayData(productList)
+  clearForm();
+  }
 }
 
 function deleteProduct(index) {
@@ -83,6 +93,7 @@ function deleteProduct(index) {
   localStorage.setItem("List Items", JSON.stringify(productList));
 }
 
+searchInput.addEventListener("keyup", (e)=> search(e.target.value) )
 function search(input) {
   let resultSearch = [];
   for(let i = 0; i < productList.length; i++) {
@@ -104,6 +115,7 @@ function validationName() {
       return false;
     }
 }
+
 priceInput.addEventListener("blur", validationPrice)
 function validationPrice() {
   let regexPrice = /^[1-9][0-9]{3,5}$/;
@@ -115,14 +127,11 @@ function validationPrice() {
         return false;
     }
 }
-categoryInput.addEventListener("blur", validationCategory)
-function validationCategory() {
-    let regexCategory = /^[A-Z][a-z0-9 ]{3,20}$/;
-      if(regexCategory.test(categoryInput.value) == true) {
-        document.getElementById("categoryAlert").classList.replace("d-block", "d-none");
-        return true;
-      }else {
-      document.getElementById("categoryAlert").classList.replace("d-none", "d-block");
-      return false;
-    }
-}
+
+document.addEventListener("keyup", function (e) {
+  if (e.key == "Enter") {
+    addProduct()
+  }else if (e.key == "Delete") {
+    clearForm()
+  }
+})
