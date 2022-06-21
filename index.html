@@ -17,7 +17,6 @@
         <input type="text" placeholder="Product Name..." class="form-control" id="productNmae">
         <p id="nameAlert" class="alert p-2 d-none">Name is not valid enter a litter is uppercas and minimum 3 litters lowercase</p>
       </div>
-
       <div class="input mt-3">
         <select class="form-select" id="productCategory">
           <option value="mobile">Mobile</option>
@@ -25,38 +24,26 @@
           <option value="tv">TV</option>
         </select>
       </div>
-
         <div class="input mt-3">
           <input type="number" placeholder="Product Price..." class="form-control me-2" id="productPrice">
           <p id="priceAlert" class="alert p-2 d-none">Number is not valid don't start with 0 and enter minimum four intager</p>
         </div>
-        
       <div class="input my-3">
         <input type="text" placeholder="Product Descraption..." class="form-control" id="productDescraption">
       </div>
     </div>
-      
-      <button class="btn btn-secondary mb-4" type="button" id="addPorduct" title="Click-(Enter)">Add Product <i class="fa-solid fa-plus-circle"></i></button>
-      <button class="btn btn-warning d-none mt-4 mb-5" type="button" id="addEdit"> Add edit <i class="fa-solid fa-edit"></i></button>
-      <button class="btn btn-danger ms-3 mt-4 mb-5" type="button" id="clearForm" title="Click-(Delete)">Clear Form <i class="fa-solid fa-trash-arrow-up"></i></button>
-      <input type="text" placeholder="Search..." class="form-control mx-auto w-75" id="searchInput">
+    <button class="btn btn-secondary mb-4" type="button" id="addPorduct" title="Click-(Enter)">Add Product <i class="fa-solid fa-plus-circle"></i></button>
+    <button class="btn btn-warning d-none mt-4 mb-5" type="button" id="addEdit"> Add edit <i class="fa-solid fa-edit"></i></button>
+    <button class="btn btn-danger ms-3 mt-4 mb-5" type="button" id="clearForm" title="Click-(Delete)">Clear Form <i class="fa-solid fa-trash-arrow-up"></i></button>
+    <input type="text" placeholder="Search..." class="form-control mx-auto w-75" id="searchInput">
   </div>
 
-  <div class="container">
-    <table class="table table-hover my-5">
-      <thead class="fw-bolder text-uppercase bg-black bg-opacity-25 text-center">
-        <td>INDEX</td>
-        <td>productNmae</td>
-        <td>productPrice</td>
-        <td>productCategory</td>
-        <td>productDescraption</td>
-        <td>Update</td>
-        <td>Delete</td>
-      </thead>
-      <tbody id="tableData">
-
-      </tbody>
-    </table>
+  <div class="products py-5 text-capitalize">
+    <div class="container">
+    <div class="row" id="tableData">
+      
+    </div>
+  </div>
   </div>
   
   <script src="js/bootstrap.bundle.min.js"></script>

@@ -41,15 +41,29 @@ function displayData(list) {
   let temp = ``;
   for(let i = 0; i < list.length; i++) {
         temp += `
-        <tr>
-          <td class="text-center">${i}</td>
-          <td>${list[i].name}</td>
-          <td>${list[i].price}</td>
-          <td>${list[i].category}</td>
-          <td>${list[i].descraption}</td>
-          <td class="text-center"><button class="btn btn-outline-warning" type="button" id="update" onclick="update(${i})"><i class="fa-solid fa-file-pen"></i></button></td>
-          <td class="text-center"><button class="btn btn-outline-danger" type="button" id="delete" onclick="deleteProduct(${i})"><i class="fa-solid fa-trash-can"></i></button></td>
-        </tr>
+        <div class="col-sm-6 col-md-4 col-xl-3 g-4">
+        <div class="item p-2">
+        <h6 title="Index" class="text-white-50 text-center d-block fs-3 bg-danger bg-opacity-25">${i}</h6>
+        <div class="box d-flex">
+          <div class="labels">
+            <h6 class="d-block">name:</h6>
+            <h6 class="d-block">price:</h6>
+            <h6 class="d-block">category:</h6>
+            <h6 class="d-block">decraption:</h6>
+          </div>
+          <div class="decraptions ms-2">
+            <h6 title="productNmae" class="text-white-50">${list[i].name}</h6>
+            <h6 title="productCategory" class="text-white-50">${list[i].category}</h6>
+            <h6 title="productPrice" class="text-white-50">${list[i].price}</h6>
+            <h6 title="productDescraption" class="text-white-50">${list[i].descraption}</h6>
+          </div>
+        </div>
+        <div class="buttons d-flex">
+          <button class="btn btn-outline-warning my-2 me-2 w-50" type="button" title="Update" id="update" onclick="update(${i})"><i class="fa-solid fa-file-pen"></i></button>
+          <button class="btn btn-outline-danger my-2 w-50" type="button" title="Delete" id="delete" onclick="deleteProduct(${i})"><i class="fa-solid fa-trash-can"></i></button>
+        </div>
+        </div>
+      </div>
         `;
       }
   document.getElementById("tableData").innerHTML = temp;
@@ -127,11 +141,3 @@ function validationPrice() {
         return false;
     }
 }
-
-document.addEventListener("keyup", function (e) {
-  if (e.key == "Enter") {
-    addProduct()
-  }else if (e.key == "Delete") {
-    clearForm()
-  }
-})
